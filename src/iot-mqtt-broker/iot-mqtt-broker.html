@@ -1,0 +1,45 @@
+<script type="text/javascript">
+  RED.nodes.registerType('Tencent IoT MQTT Broker', {
+    category: 'config',
+    defaults: {
+      name: { value: '' },
+      productId: { value: '' },
+      deviceName: { value: '' },
+      deviceSecret: { value: '' },
+    },
+    paletteLabel: 'Tencent IoT MQTT Broker',
+    label: function () {
+      return `MQTT连接: ${this.productId}/${this.deviceName}`
+    }
+  });
+</script>
+
+<script type="text/html" data-template-name="Tencent IoT MQTT Broker">
+  <div class="form-row">
+    <label for="node-config-input-productID"><i class="fa fa-bookmark"></i>产品ID</label>
+    <input type="text" id="node-config-input-productId">
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-deviceName"><i class="fa fa-bookmark"></i>设备名称</label>
+    <input type="text" id="node-config-input-deviceName">
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-deviceSecret"><i class="fa
+    fa-bookmark"></i>设备密钥</label>
+    <input type="text" id="node-config-input-deviceSecret">
+  </div>
+</script>
+
+<script type="text/html" data-help-name="Tencent IoT MQTT Broker">
+  <p>创建与腾讯云IoT Explorer的连接，对于同一设备的订阅和发布，可以复用同一连接。</p>
+
+  <h3>参数</h3>
+  <dl class="message-properties">
+    <dt>productId <span class="property-type">string</span></dt>
+    <dd>产品名称</dd>
+    <dt>deviceId <span class="property-type">string</span></dt>
+    <dd>设备名称</dd>
+    <dt>deviceSecret <span class="property-type">string</span></dt>
+    <dd>设备密钥</dd>
+  </dl>
+</script>

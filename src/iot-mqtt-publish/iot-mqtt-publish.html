@@ -1,0 +1,69 @@
+<script type="text/javascript">
+  RED.nodes.registerType('iot-mqtt-publish', {
+    category: 'Tencent Cloud IoT',
+    color: '#2894FF',
+    defaults: {
+      name: { value: 'Tencent IoT Publish' },
+      mqttBroker: { value: '', type: 'Tencent IoT MQTT Broker', required: true },
+      topic: { value: '' },
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: 'lianlian.png',
+    paletteLabel: 'Tencent IoT Publish',
+    align: 'right',
+    label: function () {
+      return this.name;
+    },
+    oneditprepare: function () {
+      $('#node-input-payload').typedInput({
+        type: 'json',
+        types: ['json']
+      });
+    },
+  });
+</script>
+
+<script type="text/html" data-template-name="iot-mqtt-publish">
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i>NodeName</label>
+    <input type="text" id="node-input-name" placeholder="NodeName">
+  </div>
+  <div class="form-row">
+    <label for="node-input-mqttBroker"><i class="fa fa-tag"></i>Mqtt Broker</label>
+    <input type="text" id="node-input-mqttBroker" placeholder="Mqtt Broker">
+  </div>
+  <div class="form-row">
+    <label for="node-input-topic"><i class="fa fa-tag"></i>Topic</label>
+    <input type="text" id="node-input-topic" placeholder="Topic">
+  </div>
+</script>
+
+<script type="text/html" data-help-name="iot-mqtt-publish">
+  <p>该节点连接腾讯云IOT Explorer，向平台publish内容</p>
+
+  <h3>输入</h3>
+  <dl class="message-properties">
+    <dt>payload<span class="property-type">json</span></dt>
+    <dd>publish的内容，传递一个json对象</dd>
+    <dt class="optional">topic<span class="property-type">string</span></dt>
+    <dd>MQTT主题</dd>
+  </dl>
+
+  <h3>输出</h3>
+  <dl class="message-properties">
+    <dt>payload<span class="property-type">json</span></dt>
+    <dd>透传publish的内容</dd>
+    <dt class="optional">topic <span class="property-type">string</span></dt>
+    <dd>透传MQTT主题</dd>
+  </dl>
+
+  <h3>详细</h3>
+  <p>使用该节点前，需要先选择一个<code>MQTT Broker</code>以建立链接，多个(订阅和发布)节点可共享同一连接。</p>
+
+  <p><code>msg.payload</code>为publish的内容，格式需要符合腾讯云IoT的要求。</p>
+
+  <p><code>msg.topic</code>可以通过input来传递topic，也可以通过设置public结点的属性来指定topic。<strong>input的优先级大于节点属性。</strong></p>
+
+  <p>publish成功时，会将msg向后透传。</p>
+</script>

@@ -1,0 +1,27 @@
+{
+  "name": "node-red-contrib-qcloud-iotexplorer",
+  "version": "1.0.1",
+  "description": "Tencent Cloud IOT Node-RED Nodes",
+  "keywords": [
+    "node-red"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/crypto-js": "^4.0.2",
+    "@types/mqtt": "^2.5.0",
+    "@types/node-red": "^1.1.1",
+    "crypto-js": "^4.1.1",
+    "mqtt": "^4.2.8"
+  },
+  "devDependencies": {
+    "typescript": "^4.3.5"
+  },
+  "node-red": {
+    "nodes": {
+      "iot-mqtt-subscribe": "src/iot-mqtt-subscribe/iot-mqtt-subscribe.js",
+      "iot-mqtt-publish": "src/iot-mqtt-publish/iot-mqtt-publish.js",
+      "iot-mqtt-broker": "src/iot-mqtt-broker/iot-mqtt-broker.js"
+    }
+  }
+}

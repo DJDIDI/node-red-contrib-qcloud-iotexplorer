@@ -1,0 +1,48 @@
+<script type="text/javascript">
+  RED.nodes.registerType('iot-mqtt-subscribe', {
+    category: 'Tencent Cloud IoT',
+    color: '#2894FF',
+    defaults: {
+      name: { value: 'Tencent IoT Subscribe' },
+      mqttBroker: { value: '', type: 'Tencent IoT MQTT Broker', required: true },
+      topic: { value: '', required: true }
+    },
+    inputs: 0,
+    outputs: 1,
+    icon: 'icons/lianlian.png',
+    paletteLabel: 'Tencent IoT Subscribe',
+    label: function () {
+      return this.name;
+    }
+  });
+</script>
+
+<script type="text/html" data-template-name="iot-mqtt-subscribe">
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-mqttBroker"><i class="fa fa-tag"></i>Mqtt Broker</label>
+    <input type="text" id="node-input-mqttBroker" placeholder="Mqtt Broker">
+  </div>
+  <div class="form-row">
+    <label for="node-input-topic"><i class="fa fa-tag"></i>Topic</label>
+    <input type="text" id="node-input-topic" placeholder="Topic">
+  </div>
+</script>
+
+<script type="text/html" data-help-name="iot-mqtt-subscribe">
+  <p>该节点连接腾讯云IOT Explorer，订阅topic，输出下发的内容</p>
+
+  <h3>输出</h3>
+  <dl class="message-properties">
+    <dt>msg.payload <span class="property-type">json</span></dt>
+    <dd>下发的内容</dd>
+    <dt class="optional">msg.topic <span class="property-type">string</span></dt>
+    <dd>订阅的主题</dd>
+  </dl>
+
+  <h3>详细</h3>
+  <p>使用该节点前，需要先选择一个<code>MQTT Broker</code>以建立链接，多个(订阅和发布)节点可共享同一连接。</p>
+</script>
